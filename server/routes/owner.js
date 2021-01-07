@@ -1,11 +1,14 @@
 const router = require('express').Router();
 const Owner = require('../models/owner');
+const upload = require('../middlewares/upload-photo');
 
-router.post('/owners', async (req, res) => {
+// POST api
+router.post('/owners', upload.single('photo'), async (req, res) => {
   try {
     let owner = new Owner();
     owner.name = req.body.name;
     owner.about = req.body.about;
+    owner.photo = req.file.location;
 
     await owner.save();
 
@@ -21,6 +24,7 @@ router.post('/owners', async (req, res) => {
   }
 });
 
+// GET api
 router.get('/owners', async (req, res) => {
   try {
     let owners = await Owner.find();
