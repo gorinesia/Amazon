@@ -14,10 +14,21 @@ router.post('/auth/signup', async (req, res) => {
       newUser.password = req.body.password;
       await newUser.save();
       let token = jwt.sign(newUser.toJSON(), process.env.SECRET, {
-        expiresIn: 604800
+        expiresIn: 604800 // 1week
       });
+
+      res.json({
+        success: true,
+        token: token,
+        message: 'Successfully created a new user'
+      })
     } catch (err) {
-      
+      res.status(500).json({
+        success: false,
+        message: err.message
+      });
     }
   }
-})
+});
+
+module.exports = router;
