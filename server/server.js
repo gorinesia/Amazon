@@ -32,7 +32,7 @@ const productRoutes = require('./routes/product');
 const categoryRoutes = require('./routes/category');
 const ownerRoutes = require('./routes/owner');
 const userRoutes = require('./routes/auth');
-// const reviewRoutes = require('./routes/review');
+const reviewRoutes = require('./routes/review');
 const addressRoutes = require('./routes/address');
 const paymentRoutes = require('./routes/payment');
 
@@ -40,7 +40,7 @@ app.use('/api', productRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', ownerRoutes);
 app.use('/api', userRoutes);
-// app.use('/api', reviewRoutes);
+app.use('/api', reviewRoutes);
 app.use('/api', addressRoutes);
 app.use('/api', paymentRoutes);
 
