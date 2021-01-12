@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const addressSchema = new Schema({
+const AddressSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   country: String,
   fullName: String,
@@ -14,4 +14,4 @@ const addressSchema = new Schema({
   securityCode: String
 });
 
-module.exports = mongoose.model('Address', addressSchema);
+module.exports = mongoose.model('Address', AddressSchema);
